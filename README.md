@@ -1,12 +1,22 @@
 # dotfiles
 
 ## set up
-`mkdir ~/dotfiles`
+```
+mkdir ~/dotfiles
 
-`git clone https://github.com/satokiy/dotfiles.git`
+git clone https://github.com/satokiy/dotfiles.git
 
-`ln -sf ~/dotfiles/vim/.vimrc ~/.vimrc` # ディレクトリ構造は個別
+# シンボリックリンク
+ln -sf ~/dotfiles/_vimrc/_vimrc ~/.vimrc # ディレクトリ構造は個別
 
+# vundleのclone
+git clone http://github.com/VundleVim/Vundle.Vim.git ~/dotfiles/vimfiles/.vim/vundle.git
 
+# vimエディタを開く
+vi
+
+# プラグインのインストール
+:BundleInstall
+```
 
 
