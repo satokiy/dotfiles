@@ -2,8 +2,6 @@
 
 ## set up
 ```
-mkdir ~/dotfiles
-
 git clone https://github.com/satokiy/dotfiles.git
 
 # シンボリックリンク
