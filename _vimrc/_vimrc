@@ -72,11 +72,11 @@ inoremap <silent> jj <ESC>
 nnoremap <Esc><Esc> :nohlsearch<CR>
 set fileformats=unix,dos,mac
 set fileencodings=utf-8,sjis
-nnoremap ; :
-nnoremap : ;
+" nnoremap ; :
+" nnoremap : ;
 
 " NERDTree shortcut
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
-
+let NERDTreeShowHidden=1
 " autocmd
 autocmd QuickFixCmdPost *grep* cwindow
