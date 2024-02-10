@@ -8,9 +8,14 @@ call vundle#begin()
 " Plugin '[Github Author]/[Github repo]' の形式で記入
 " :BundleInstall を実行するとvim/bundle配下にinstallされる
 Plugin 'VundleVim/Vundle.vim'
+" tree表示
 Plugin 'scrooloose/nerdtree'
+" git diffを左に表示
 Plugin 'airblade/vim-gitgutter'
+" file finder. ctrl + p -> ctrl + jk
 Plugin 'ctrlpvim/ctrlp.vim'
+" (), {}などをうまく処理する
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin indent on
@@ -52,6 +57,7 @@ nnoremap k gk
 " シンタックスハイライトの有効化
 syntax enable
 let g:netrw_liststyle = 3
+noremap PP "0p
 
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
