@@ -1,3 +1,5 @@
 /vimfiles/.vim/bundle/
 .netrwhist
 /vimfiles/.vim/vundle.git/
+
+karabiner/automatic_backups/
