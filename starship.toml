@@ -16,7 +16,7 @@ disabled = false
 
 [directory]
 truncation_length = 80
-truncation_symbol = ".../"
+truncation_symbol = ""
 style = "white"
 
 [git_branch]
