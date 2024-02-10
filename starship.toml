@@ -1,0 +1,33 @@
+add_newline = false
+command_timeout = 1000
+
+[line_break]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[golang]
+symbol = " "
+disabled = false
+
+[directory]
+truncation_length = 80
+truncation_symbol = ".../"
+style = "white"
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch(:$remote_branch)]($style) "
+style = "purple"
+
+[git_status]
+disabled = false
+
+[git_metrics]
+disabled = false
+added_style = "green"
+deleted_style = "red"
