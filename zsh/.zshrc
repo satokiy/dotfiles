@@ -3,7 +3,10 @@ alias ll='ls -l'
 alias dc='docker compose'
 alias d='docker'
 
-## trash
+# git
+export GIT_CONFIG_GLOBAL=${HOME}/.config/git/config
+
+# trash
 if type trash > /dev/null 2>&1; then
   alias rm='trash -F'
 fi
