@@ -1,11 +1,8 @@
-# シンボリックリンク
-ln -sf ~/dotfiles/_vimrc/_vimrc ~/.vimrc # ディレクトリ構造は個別
+#!/bin/zsh
 
-# vundleのclone
-git clone http://github.com/VundleVim/Vundle.Vim.git ~/dotfiles/vimfiles/.vim/vundle.git
-
-# vimエディタを開く
-vi
-
-# プラグインのインストール
-:BundleInstall
+# configディレクトリ配下の各ディレクトリでsetup.shを探し、存在する場合は実行する
+for setup_script in $(find ./config -name 'setup.sh'); do
+    echo "Running $setup_script"
+    chmod +x $setup_script
+    ./$setup_script
+done
