@@ -6,4 +6,4 @@ if [[ $current != *dotfiles ]]; then
     exit 1
 fi
 
-ln -s $(pwd)/config/zsh/.zshrc $HOME/.zshrc
+ln -s $(pwd)/config/zsh/.zshrc $HOME/.zshrc_personal

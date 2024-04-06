@@ -6,12 +6,12 @@ if [[ $current != *dotfiles ]]; then
     exit 1
 fi
 
-if [ -f $HOME/.config/git/my.conf ]; then
-    rm $HOME/.config/git/my.conf
+if [ -L $HOME/.config/git/my.conf ]; then
+    unlink $HOME/.config/git/my.conf
 fi
 
-if [ -f $HOME/.config/git/config ]; then
-    rm $HOME/.config/git/config
+if [ -L $HOME/.config/git/config ]; then
+    unlink $HOME/.config/git/config
 fi
 
 echo "Create your user.conf at .config/git"

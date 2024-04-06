@@ -6,8 +6,8 @@ if [[ $current != *dotfiles ]]; then
     exit 1
 fi
 
-if [ -f $HOME/.config/starship.toml ]; then
-    rm $HOME/.config/starship.toml
+if [ -L $HOME/.config/starship.toml ]; then
+    unlink $HOME/.config/starship.toml
 fi
 
 ln -s $(pwd)/config/starship/starship.toml $HOME/.config/starship.toml

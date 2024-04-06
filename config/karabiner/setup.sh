@@ -6,8 +6,8 @@ if [[ $current != *dotfiles ]]; then
     exit 1
 fi
 
-if [[ -e $HOME/.config/karabiner ]]; then
-    mv $HOME/.config/karabiner $HOME/.config/karabiner
+if [[ -L $HOME/.config/karabiner ]]; then
+    unlink $HOME/.config/karabiner
 fi
 
 ln -s $(pwd)/config/karabiner $HOME/.config/karabiner
