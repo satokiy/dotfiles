@@ -1,7 +1,7 @@
 " Plugin
 set nocompatible
 filetype off
-set rtp+=~/dotfiles/vimfiles/.vim/vundle.git
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " 導入したいプラグインを以下に列挙
