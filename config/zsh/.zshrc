@@ -73,3 +73,4 @@ FPATH=~/homebrew/share/zsh/site-functions:$FPATH
 
 autoload -Uz compinit
 compinit
+export PATH="$HOME/.cargo/bin:$PATH"
