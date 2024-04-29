@@ -31,3 +31,6 @@ disabled = false
 disabled = false
 added_style = "green"
 deleted_style = "red"
+
+[kubernetes]
+disabled=false
