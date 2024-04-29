@@ -2,6 +2,7 @@
 alias ll='ls -l'
 alias dc='docker compose'
 alias d='docker'
+alias k='kubectl'
 
 # git
 export GIT_CONFIG_GLOBAL=${HOME}/.config/git/config
@@ -12,11 +13,12 @@ if type trash > /dev/null 2>&1; then
 fi
 
 # rbenv
+export PATH="$(brew --prefix)/bin:$PATH"
 eval "$(rbenv init - zsh)"
 [[ -d ~/.rbenv  ]] && \
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
   eval "$(rbenv init -)"
-export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/shims:$HOME/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/jamf/bin:/bin
+export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/shims:$(brew --prefix)/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/jamf/bin:/bin
 
 # go
 export GOPATH=$HOME/go
@@ -33,7 +35,7 @@ bindkey '^o' peco-git-checkout
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # postgresql
-export PATH="$HOME/homebrew/opt/postgresql@13/bin:$PATH"
+export PATH="$(brew --prefix)/opt/postgresql@13/bin:$PATH"
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -50,7 +52,7 @@ export PATH="$HOME/Library/Python/3.11/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
 
 # asdf
-. $HOME/homebrew/opt/asdf/libexec/asdf.sh
+. $(brew --prefix)/opt/asdf/libexec/asdf.sh
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -65,12 +67,15 @@ setopt nonomatch
 # starship
 eval "$(starship init zsh)"
 
-# zsh autocomplete (!) depends on where homebrew is installed
-source ~/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-FPATH=~/homebrew/share/zsh-completions:$FPATH
-FPATH=~/homebrew/share/zsh/site-functions:$FPATH
+# zsh autocomplete
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
 autoload -Uz compinit
 compinit
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# kubectl autocomplete
+source <(kubectl completion zsh)
