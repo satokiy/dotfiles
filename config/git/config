@@ -1,4 +1,9 @@
 [include]
         path = my.conf
+[includeIf "gitdir:github.com/"]
         path = user.conf
+[includeIf "gitdir:~/work/"]
+        path = work.conf
  
+[credential]
+	helper = osxkeychain
