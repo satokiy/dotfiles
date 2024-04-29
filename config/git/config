@@ -1,6 +1,6 @@
 [include]
         path = my.conf
-[includeIf "gitdir:github.com/"]
+[includeIf "gitdir:~/KojinProjects/"]
         path = user.conf
 [includeIf "gitdir:~/work/"]
         path = work.conf
