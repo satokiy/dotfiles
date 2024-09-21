@@ -4,6 +4,11 @@ alias dc='docker compose'
 alias d='docker'
 alias k='kubectl'
 
+# brew
+export PATH="$HOME/homebrew/bin:$PATH"
+
+export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/shims:$(brew --prefix)/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/jamf/bin:/bin
+
 # git
 export GIT_CONFIG_GLOBAL=${HOME}/.config/git/config
 
@@ -18,11 +23,11 @@ eval "$(rbenv init - zsh)"
 [[ -d ~/.rbenv  ]] && \
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
   eval "$(rbenv init -)"
-export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/shims:$(brew --prefix)/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/jamf/bin:/bin
 
 # go
 export GOPATH=$HOME/go
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$PATH:'$(go env GOPATH)'/bin"
 
 # git checkout
 function peco-git-checkout {
@@ -74,8 +79,34 @@ FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
 autoload -Uz compinit
-compinit
+# compauditが遅いので24時間に一度だけ実行
+local now=$(date +"%s")
+local updated=$(date -r ~/.zcompdump +"%s")
+local threshold=$((60 * 60 * 24))
+if [ $((${now} - ${updated})) -gt ${threshold} ]; then
+  compinit
+else
+  # if there are new functions can be omitted by giving the option -C.
+  compinit -C
+fi
+
+# cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # kubectl autocomplete
 source <(kubectl completion zsh)
+
+# istioctl
+export PATH=$HOME/.istioctl/bin:$PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/satoki.yamada/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/satoki.yamada/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/satoki.yamada/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/satoki.yamada/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Created by `pipx` on 2024-04-15 00:59:40
+export PATH="$PATH:$HOME/.local/bin"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
