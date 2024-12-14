@@ -5,14 +5,19 @@ command_timeout = 1000
 disabled = true
 
 [aws]
-disabled = true
+disabled = false
+format = 'on [$symbol$profile]($style) '
+force_display = true
+[aws.region_aliases]
+ap-northeast-1 = 'tokyo'
 
 [gcloud]
 disabled = true
+format = 'on [$account(@$domain)(\($project\))]($style) '
 
 [golang]
 symbol = " "
-disabled = false
+disabled = true
 
 [directory]
 truncation_length = 80
@@ -27,10 +32,30 @@ style = "purple"
 [git_status]
 disabled = false
 
-[git_metrics]
-disabled = false
-added_style = "green"
-deleted_style = "red"
+# [git_metrics]
+# disabled = false
+# added_style = "green"
+# deleted_style = "red"
 
 [kubernetes]
 disabled=false
+symbol = ""
+contexts = [
+  { context_pattern = "arn:aws:eks:(.*):638870566973:cluster/main-(.*)", context_alias = "$2-dev" },
+  { context_pattern = "arn:aws:eks:(.*):740855071960:cluster/main-(.*)", context_alias = "$2-prod" },
+  { context_pattern = "arn:aws:eks:(.*):486439528070:cluster/main-(.*)", context_alias = "$2-qa" },
+  { context_pattern = "satoki-(.*)@(.*)", context_alias = "satoki-$1" },
+  ]
+
+[gradle]
+disabled = true
+
+[java]
+disabled = true
+
+[bun]
+disabled = true
+
+[package]
+disabled = true
+
