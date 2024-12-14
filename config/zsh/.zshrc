@@ -3,6 +3,7 @@ alias ll='ls -l'
 alias dc='docker compose'
 alias d='docker'
 alias k='kubectl'
+alias tf='terraform'
 
 # brew
 export PATH="$HOME/homebrew/bin:$PATH"
@@ -34,13 +35,14 @@ function peco-git-checkout {
   git branch | peco | xargs git checkout
 }
 zle -N peco-git-checkout
-bindkey '^o' peco-git-checkout
+bindkey '^p' peco-git-checkout
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # postgresql
 export PATH="$(brew --prefix)/opt/postgresql@13/bin:$PATH"
+export PATH="$(brew --prefix)/opt/postgresql@15/bin:$PATH"
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -56,8 +58,8 @@ export PATH="$HOME/Library/Python/3.11/bin:$PATH"
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
 
-# asdf
-. $(brew --prefix)/opt/asdf/libexec/asdf.sh
+# mise
+eval "$($(brew --prefix)/bin/mise activate zsh)"
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -108,5 +110,5 @@ if [ -f '/Users/satoki.yamada/google-cloud-sdk/completion.zsh.inc' ]; then . '/U
 # Created by `pipx` on 2024-04-15 00:59:40
 export PATH="$PATH:$HOME/.local/bin"
 
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+# vim ctags
+alias ctags="`brew --prefix`/bin/ctags"
