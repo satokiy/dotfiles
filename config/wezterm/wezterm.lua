@@ -10,6 +10,6 @@ local config = wezterm.config_builder()
 config.color_scheme = 'Solarized Dark'
 config.window_background_opacity = 0.9
 config.font = wezterm.font('Fira Code')
-config.font_size = 12.0
+config.font_size = 14.0
 -- and finally, return the configuration to wezterm
 return config
