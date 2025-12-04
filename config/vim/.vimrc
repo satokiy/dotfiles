@@ -36,6 +36,10 @@ set hidden
 set showcmd
 set backspace=indent,eol,start
 
+" yank(コピー)した時にクリップボードに入るようにする
+set clipboard=unnamedplus
+set clipboard+=unnamed
+
 " 見た目系
 " 行末の1文字先までカーソルを移動できるように
 set virtualedit=onemore
