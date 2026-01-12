@@ -39,6 +39,8 @@ set backspace=indent,eol,start
 " yank(コピー)した時にクリップボードに入るようにする
 set clipboard=unnamedplus
 set clipboard+=unnamed
+" p で無名レジスタを上書きしない
+xnoremap p "_dP
 
 " 見た目系
 " 行末の1文字先までカーソルを移動できるように
