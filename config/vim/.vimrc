@@ -65,6 +65,9 @@ syntax enable
 let g:netrw_liststyle = 3
 noremap PP "0p
 
+nnoremap gh ^
+nnoremap gl $
+
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set ignorecase

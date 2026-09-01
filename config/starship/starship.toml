@@ -1,19 +1,26 @@
 add_newline = false
 command_timeout = 1000
 
+format = "$kubernetes$aws$gcloud$all"
+
 [line_break]
 disabled = true
 
 [aws]
 disabled = false
-format = 'on [$symbol$profile]($style) '
+symbol = 'A:'
+format = '| [$symbol$profile]($style) '
 force_display = true
-[aws.region_aliases]
-ap-northeast-1 = 'tokyo'
+[aws.profile_aliases]
+m3pay-dev = 'dev'
+m3pay-qa = 'qa'
+'m3pay-prod(read)' = 'prod(read)'
+'m3pay-prod(admin)' = 'prod(admin)'
 
 [gcloud]
-disabled = true
-format = 'on [$account(@$domain)(\($project\))]($style) '
+disabled = false
+symbol = "G:"
+format = '| [$symbol$project]($style) '
 
 [golang]
 symbol = " "
@@ -39,11 +46,9 @@ disabled = false
 
 [kubernetes]
 disabled=false
-symbol = ""
+format = '[$symbol$context]($style) '
+symbol = "k:"
 contexts = [
-  { context_pattern = "arn:aws:eks:(.*):638870566973:cluster/main-(.*)", context_alias = "$2-dev" },
-  { context_pattern = "arn:aws:eks:(.*):740855071960:cluster/main-(.*)", context_alias = "$2-prod" },
-  { context_pattern = "arn:aws:eks:(.*):486439528070:cluster/main-(.*)", context_alias = "$2-qa" },
   { context_pattern = "satoki-(.*)@(.*)", context_alias = "satoki-$1" },
   ]
 
@@ -59,3 +64,18 @@ disabled = true
 [package]
 disabled = true
 
+[nodejs]
+symbol = ' '
+format = '[$symbol($version)]($style) '
+
+[kotlin]
+disabled = true
+
+[terraform]
+disabled = true
+
+[rust]
+disabled = true
+
+[docker_context]
+disabled = true
