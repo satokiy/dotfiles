@@ -4,6 +4,8 @@
 # 個人用
 [includeIf "hasconfig:remote.*.url:https://github.com/satokiy/**"]
         path = user.conf
+[includeIf "hasconfig:remote.*.url:git@github.com:satokiy/**"]
+        path = user.conf
  
 [credential]
 	helper = osxkeychain
