@@ -22,19 +22,17 @@ export PATH="$HOME/local/bin:$PATH"
 export GIT_CONFIG_GLOBAL=${HOME}/.config/git/config
 
 # trash
-if type trash > /dev/null 2>&1; then
-  alias rm='trash -F'
-fi
+#if type trash > /dev/null 2>&1; then
+#  alias rm='trash -F'
+#fi
 
 # mise
 eval "$($BREW_PATH/bin/mise activate zsh)"
 
 # rbenv
-export PATH="$BREW_PATH/bin:$PATH"
-eval "$(rbenv init - zsh)"
 [[ -d ~/.rbenv  ]] && \
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
-  eval "$(rbenv init -)"
+  eval "$(rbenv init - zsh)"
 
 # go
 export GOPATH=$HOME/go
@@ -57,12 +55,6 @@ export PATH="$BREW_PATH/opt/postgresql@15/bin:$PATH"
 # direnv
 eval "$(direnv hook zsh)"
 
-# java
-export JAVA_11_HOME=$(/usr/libexec/java_home -v 11)
-export JAVA_8_HOME=$(/usr/libexec/java_home -v 1.8)
-alias java11="export JAVA_HOME=$JAVA_11_HOME"
-alias java8="export JAVA_HOME=$JAVA_8_HOME"
-
 # python
 export PATH="$HOME/Library/Python/3.11/bin:$PATH"
 # pyenv
@@ -80,12 +72,6 @@ setopt nonomatch
 
 # starship
 eval "$(starship init zsh)"
-
-# zsh autocomplete
-source $BREW_PATH/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $BREW_PATH/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-FPATH=$BREW_PATH/share/zsh-completions:$FPATH
-FPATH=$BREW_PATH/share/zsh/site-functions:$FPATH
 
 autoload -Uz compinit
 # compauditが遅いので24時間に一度だけ実行
