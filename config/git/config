@@ -6,9 +6,26 @@
         path = user.conf
 [includeIf "hasconfig:remote.*.url:git@github.com:satokiy/**"]
         path = user.conf
+
+# 会社PCなどのローカル設定
+[include]
+        path = local.conf
  
 [credential]
 	helper = osxkeychain
 
 [ghq]
   root = ~/ghq
+
+# GitHub への HTTPS 接続では GitHub CLI (gh) の認証情報を使う。
+[credential "https://github.com"]
+	# 先に指定された認証用プログラムの一覧をリセットする。
+	helper = 
+	# ! 以降をコマンドとして実行し、gh に認証情報を問い合わせる。
+	helper = !/opt/homebrew/bin/gh auth git-credential
+# Gist への HTTPS 接続では GitHub CLI (gh) の認証情報を使う。
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+
