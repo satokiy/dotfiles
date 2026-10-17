@@ -4,8 +4,6 @@
 # gwd / gwclean は git worktree remove で worktree ディレクトリを rm するが、
 # .claude* など gitignore 対象の未追跡ファイルは --force なしでも一緒に消える。
 # ここでは削除前に worktree を丸ごと ~/.Trash へ退避してから prune する。
-#
-# この後で source されることで、.zshrc 内の inline な gwd / gwclean を上書きする。
 
 # worktree ディレクトリを丸ごとゴミ箱へ退避する。
 # ~/.Trash が同一ボリュームなら mv で瞬時、別ボリュームなら copy + rm にフォールバック。
@@ -38,7 +36,7 @@ gwt-restore() {
 
 # 削除: peco で選んで、ゴミ箱へ退避してから worktree を prune する。
 gwd() {
-  local target_dir=$(git worktree list | grep "=" | peco | awk '{print $1}')
+  local target_dir=$(git worktree list | sed '1d' | peco | awk '{print $1}')
   [ -n "$target_dir" ] || return
   _gwt_trash "$target_dir" || return
   git worktree prune

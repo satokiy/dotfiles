@@ -1,1 +1,6 @@
 config/karabiner/automatic_backups/
+
+# Git のローカル設定（個人情報・勤務先情報）
+config/git/local.conf
+config/git/user.conf
+config/git/work.conf
