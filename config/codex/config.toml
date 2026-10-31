@@ -1,0 +1,5 @@
+# Codex CLI の応答完了時に端末へ通知する。
+[tui]
+notifications = ["agent-turn-complete"]
+notification_method = "auto"
+notification_condition = "always"
